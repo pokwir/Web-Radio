@@ -1,0 +1,12 @@
+[
+    {
+        "name": "FastCast Radio",
+        "url": "http://usa4.fastcast4u.com:5006/stream",
+        "logo": "https://example.com/fastcast-logo.png"
+    },
+    {
+        "name": "Cool Vibes Radio",
+        "url": "http://coolvibesradio.com/stream",
+        "logo": "https://example.com/coolvibes-logo.png"
+    }
+]
