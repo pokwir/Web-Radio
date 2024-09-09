@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Stream</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+        .radio-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .radio-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 300px;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        .radio-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .radio-name {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Radio Stations</h1>
+    <div class="radio-container" id="radioContainer">
+        <!-- Radio cards will be dynamically added here -->
+    </div>
+    
+    <script>
+        // Fetch the radio stations data from JSON file
+        async function loadRadioStations() {
+            const response = await fetch('stations.json');
+            const stations = await response.json();
+
+            const container = document.getElementById('radioContainer');
+            container.innerHTML = '';
+
+            // Dynamically create the radio cards
+            stations.forEach(station => {
+                const card = document.createElement('div');
+                card.classList.add('radio-card');
+
+                card.innerHTML = `
+                    <img src="${station.logo}" alt="${station.name} Logo" class="radio-logo">
+                    <div class="radio-name">${station.name}</div>
+                    <audio controls>
+                        <source src="${station.url}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Call the function to load the radio stations
+        loadRadioStations();
+    </script>
+</body>
+</html>
