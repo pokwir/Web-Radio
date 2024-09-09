@@ -73,10 +73,7 @@
                 card.innerHTML = `
                     <img src="${station.logo}" alt="${station.name} Logo" class="radio-logo">
                     <div class="radio-name">${station.name}</div>
-                    <audio controls>
-                        <src="${station.url}">
-                        Your browser does not support the audio element.
-                    </audio>
+                    <audio controls="controls" src="${station.url}">Your browser does not support the audio element.</audio>
                 `;
                 container.appendChild(card);
             });
